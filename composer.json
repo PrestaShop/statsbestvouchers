@@ -2,7 +2,7 @@
   "name": "prestashop/statsbestvouchers",
   "description": "PrestaShop module statsbestvouchers",
   "homepage": "https://github.com/PrestaShop/statsbestvouchers",
-  "license": "AFL - Academic Free License (AFL 3.0)",
+  "license": ["AFL-3.0"],
   "authors": [
     {
       "name": "PrestaShop SA",
