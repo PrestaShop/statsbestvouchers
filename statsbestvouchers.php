@@ -127,7 +127,7 @@ class statsbestvouchers extends ModuleGrid
 				LEFT JOIN '._DB_PREFIX_.'cart_rule cr ON cr.id_cart_rule = ocr.id_cart_rule
 				WHERE o.valid = 1
 					'.Shop::addSqlRestriction(Shop::SHARE_ORDER, 'o').'
-					AND o.invoice_date BETWEEN '.$this->getDate().'
+					AND o.date_add BETWEEN '.$this->getDate().'
 				GROUP BY ocr.id_cart_rule';
 
         if (Validate::IsName($this->_sort)) {
