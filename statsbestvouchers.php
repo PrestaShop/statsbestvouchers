@@ -81,7 +81,7 @@ class statsbestvouchers extends ModuleGrid
         );
 
         $this->displayName = $this->trans('Best vouchers', array(), 'Modules.Statsbestvouchers.Admin');
-        $this->description = $this->trans('Adds a list of the best vouchers to the Stats dashboard.', array(), 'Modules.Statsbestvouchers.Admin');
+        $this->description = $this->trans('Enrich the ‘Stats’ section of your back office, add a list of the most used vouchers to the dashboard.', array(), 'Modules.Statsbestvouchers.Admin');
         $this->ps_versions_compliancy = array('min' => '1.7.1.0', 'max' => _PS_VERSION_);
     }
 
