@@ -143,7 +143,7 @@ class statsbestvouchers extends ModuleGrid
 
         $values = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($this->query);
         foreach ($values as &$value) {
-            $value['ca'] = Tools::displayPrice($value['ca'], $currency);
+            $value['ca'] = $this->context->getCurrentLocale()->formatPrice($value['ca'], $currency->iso_code);
         }
 
         $this->_values = $values;
