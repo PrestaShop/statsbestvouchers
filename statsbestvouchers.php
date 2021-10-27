@@ -82,7 +82,7 @@ class statsbestvouchers extends ModuleGrid
 
         $this->displayName = $this->trans('Best vouchers', array(), 'Modules.Statsbestvouchers.Admin');
         $this->description = $this->trans('Enrich your stats, add a list of the most used vouchers to the dashboard.', array(), 'Modules.Statsbestvouchers.Admin');
-        $this->ps_versions_compliancy = array('min' => '1.7.1.0', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = array('min' => '1.7.6.0', 'max' => _PS_VERSION_);
     }
 
     public function install()
@@ -143,7 +143,7 @@ class statsbestvouchers extends ModuleGrid
 
         $values = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($this->query);
         foreach ($values as &$value) {
-            $value['ca'] = Tools::displayPrice($value['ca'], $currency);
+            $value['ca'] = $this->context->getCurrentLocale()->formatPrice($value['ca'], $currency->iso_code);
         }
 
         $this->_values = $values;
