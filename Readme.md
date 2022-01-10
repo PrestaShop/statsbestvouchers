@@ -2,7 +2,7 @@
 
 ## About
 
-Adds a list of the best vouchers to the Stats dashboard.
+Enrich your stats, add a list of the most used vouchers to the dashboard.
 
 ## Reporting issues
 
