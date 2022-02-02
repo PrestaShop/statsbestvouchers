@@ -119,7 +119,7 @@ class statsbestvouchers extends ModuleGrid
 
     public function getData()
     {
-        $currency = new Currency(Configuration::get('PS_CURRENCY_DEFAULT'));
+        $currency = new Currency((int) Configuration::get('PS_CURRENCY_DEFAULT'));
         $this->query = 'SELECT SQL_CALC_FOUND_ROWS cr.code, ocr.name, COUNT(ocr.id_cart_rule) as total, ROUND(SUM(o.total_paid_real) / o.conversion_rate,2) as ca
 				FROM ' . _DB_PREFIX_ . 'order_cart_rule ocr
 				LEFT JOIN ' . _DB_PREFIX_ . 'orders o ON o.id_order = ocr.id_order
@@ -140,12 +140,12 @@ class statsbestvouchers extends ModuleGrid
             $this->query .= ' LIMIT ' . (int) $this->_start . ', ' . (int) $this->_limit;
         }
 
-        $values = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($this->query);
+        $values = Db::getInstance((bool) _PS_USE_SQL_SLAVE_)->executeS($this->query);
         foreach ($values as &$value) {
             $value['ca'] = $this->context->getCurrentLocale()->formatPrice($value['ca'], $currency->iso_code);
         }
 
         $this->_values = $values;
-        $this->_totalCount = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue('SELECT FOUND_ROWS()');
+        $this->_totalCount = (int) Db::getInstance((bool) _PS_USE_SQL_SLAVE_)->getValue('SELECT FOUND_ROWS()');
     }
 }
